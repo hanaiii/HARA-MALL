@@ -19,6 +19,8 @@
     <modules>
         <module>product-provider-api</module>
         <module>product-provider-service</module>
+        <module>order-provider-api</module>
+        <module>order-provider-service</module>
     </modules>
     <developers>
         <developer>

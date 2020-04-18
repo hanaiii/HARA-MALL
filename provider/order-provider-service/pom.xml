@@ -3,12 +3,13 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>business</artifactId>
+        <artifactId>provider</artifactId>
         <groupId>fun.hara.mall</groupId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>seckill-business</artifactId>
+
+    <artifactId>order-provider-service</artifactId>
     <licenses>
         <license>
             <name>Apache 2.0</name>
@@ -23,27 +24,6 @@
         </developer>
     </developers>
     <dependencies>
-        <!-- Spring Boot Begin -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-actuator</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <!-- Spring Boot End -->
-        <!-- Spring Cloud Begin -->
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
-        </dependency>
-        <!-- Spring Cloud End -->
         <!-- Apache Dubbo Begin -->
         <dependency>
             <groupId>org.apache.dubbo</groupId>
@@ -97,26 +77,15 @@
         <!-- Projects Begin -->
         <dependency>
             <groupId>fun.hara.mall</groupId>
-            <artifactId>common-dto</artifactId>
-            <version>${project.parent.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>fun.hara.mall</groupId>
-            <artifactId>product-provider-api</artifactId>
-            <version>${project.parent.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>fun.hara.mall</groupId>
             <artifactId>order-provider-api</artifactId>
             <version>${project.parent.version}</version>
         </dependency>
-        <!-- Projects End -->
         <dependency>
-            <groupId>org.redisson</groupId>
-            <artifactId>redisson</artifactId>
-            <version>3.12.3</version>
+            <groupId>fun.hara.mall</groupId>
+            <artifactId>common-db</artifactId>
+            <version>${project.parent.version}</version>
         </dependency>
+        <!-- Projects End -->
     </dependencies>
-
 
 </project>
