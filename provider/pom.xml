@@ -143,6 +143,8 @@
         <dependency>
             <groupId>fun.hara.mall</groupId>
             <artifactId>common-dto</artifactId>
+            <version>${project.parent.version}</version>
+
         </dependency>
     </dependencies>
 
