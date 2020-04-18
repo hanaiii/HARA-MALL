@@ -3,22 +3,18 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>parent</artifactId>
         <groupId>fun.hara.mall</groupId>
+        <artifactId>provider-api</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>common</artifactId>
-    <packaging>pom</packaging>
+    <artifactId>order-provider-api</artifactId>
     <licenses>
         <license>
             <name>Apache 2.0</name>
             <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
         </license>
     </licenses>
-    <modules>
-        <module>common-dto</module>
-    </modules>
     <developers>
         <developer>
             <id>hanaii</id>

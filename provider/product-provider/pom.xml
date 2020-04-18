@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>product-provider-api</artifactId>
+    <artifactId>product-provider</artifactId>
     <licenses>
         <license>
             <name>Apache 2.0</name>
@@ -24,10 +24,14 @@
         </developer>
     </developers>
     <dependencies>
+        <!-- Projects Begin -->
         <dependency>
             <groupId>fun.hara.mall</groupId>
-            <artifactId>common-api</artifactId>
+            <artifactId>product-provider-api</artifactId>
             <version>${project.parent.version}</version>
         </dependency>
+        <!-- Projects End -->
     </dependencies>
+
+
 </project>
