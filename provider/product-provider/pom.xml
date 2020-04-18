@@ -31,6 +31,10 @@
             <version>${project.parent.version}</version>
         </dependency>
         <!-- Projects End -->
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-seata</artifactId>
+        </dependency>
     </dependencies>
 
 

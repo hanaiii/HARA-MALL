@@ -8,7 +8,7 @@ import org.apache.dubbo.config.annotation.Service;
 import javax.annotation.Resource;
 import java.util.List;
 
-@Service(version = "1.0.0")
+@Service
 public class ProductServiceImpl  implements ProductService {
     @Resource
     private ProductDAO productDAO;

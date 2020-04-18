@@ -17,7 +17,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/product")
 public class ProductController {
-    @Reference(version = "1.0.0")
+    @Reference
     private ProductService productService;
     @GetMapping
     public Result<List<Product>> selectAll(){

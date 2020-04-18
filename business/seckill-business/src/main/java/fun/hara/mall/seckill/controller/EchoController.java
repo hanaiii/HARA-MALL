@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class EchoController {
-    @Reference(version = "1.0.0")
+    @Reference
     private EchoService echoService;
     @GetMapping("/echo/{msg}")
     public String echo(@PathVariable("msg") String msg){

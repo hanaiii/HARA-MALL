@@ -6,6 +6,7 @@ import fun.hara.mall.order.api.OrderService;
 import fun.hara.mall.order.domain.Order;
 import fun.hara.mall.product.api.ProductService;
 import fun.hara.mall.product.domain.Product;
+import io.seata.spring.annotation.GlobalTransactional;
 import org.apache.dubbo.config.annotation.Reference;
 import org.redisson.Redisson;
 import org.redisson.api.RLock;
@@ -22,9 +23,9 @@ import java.util.concurrent.TimeUnit;
 @RestController
 @RequestMapping("/order")
 public class OrderController {
-    @Reference(version = "1.0.0")
+    @Reference
     private OrderService orderService;
-    @Reference(version = "1.0.0")
+    @Reference
     private ProductService productService;
 
     @Resource
@@ -38,6 +39,7 @@ public class OrderController {
      * @return
      */
     @PostMapping("/{productId}/{count}")
+    @GlobalTransactional(rollbackFor = Exception.class)
     public Result<Void> order(@PathVariable("productId") Long productId, @PathVariable("count") Long count) {
         // 查询对应商品库存
         RLock lock = redisson.getLock("product_stock:" + productId);
