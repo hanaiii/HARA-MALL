@@ -20,6 +20,7 @@
 
         <module>product-provider</module>
         <module>order-provider</module>
+        <module>user-provider</module>
     </modules>
     <developers>
         <developer>

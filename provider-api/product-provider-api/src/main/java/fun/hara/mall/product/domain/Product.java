@@ -1,5 +1,6 @@
 package fun.hara.mall.product.domain;
 
+import io.swagger.annotations.ApiModel;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -8,16 +9,22 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 
 /**   
- * 商品
+ * 商品实体对象
  * @Author: hanaii 
  */
 @Table(name = "tb_product")
 @Getter@Setter
-public class Product {
+@ApiModel(value = "Product", description = "商品实体对象")
+public class Product implements Serializable {
+
+    private static final long serialVersionUID = 577082953940048317L;
+
+    public static final int SECKILL = 2;
     /**
      * 主键
      */

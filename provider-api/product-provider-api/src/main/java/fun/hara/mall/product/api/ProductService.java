@@ -2,7 +2,9 @@ package fun.hara.mall.product.api;
 
 import fun.hara.mall.product.domain.Product;
 
+import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 /**   
  * 商品服务
@@ -15,4 +17,11 @@ public interface ProductService {
 
     Product selectById(Long id);
 
+    /**
+     * 查询在时间段范围内的商品 [startTime, endTime)
+     * @param startTime
+     * @param endTime
+     * @param keys
+     */
+    List<Product> selectSeckillProduct(Date startTime, Date endTime, Set<Long> excluedIds);
 }

@@ -18,6 +18,7 @@
     </licenses>
     <modules>
         <module>seckill-business</module>
+        <module>oauth2-business</module>
     </modules>
     <developers>
         <developer>
@@ -104,5 +105,7 @@
             <artifactId>common-dto</artifactId>
             <version>${project.parent.version}</version>
         </dependency>
+
+
     </dependencies>
 </project>

@@ -8,9 +8,24 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-
     <artifactId>gateway</artifactId>
 
+    <!-- 开源协议与作者信息 Begin -->
+    <licenses>
+        <license>
+            <name>Apache 2.0</name>
+            <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+        </license>
+    </licenses>
+    <developers>
+        <developer>
+            <id>hanaii</id>
+            <name>hanaii</name>
+            <email>hanaii@126.com</email>
+        </developer>
+    </developers>
+    <!-- 开源协议与作者信息 End -->
+    <!-- 依赖 Begin -->
     <dependencies>
         <!-- Spring Boot Begin -->
         <dependency>
@@ -50,6 +65,5 @@
         </dependency>
         <!-- Commons Begin -->
     </dependencies>
-
-
+    <!-- 依赖 End -->
 </project>

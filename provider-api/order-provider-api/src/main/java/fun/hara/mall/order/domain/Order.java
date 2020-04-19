@@ -8,12 +8,15 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 
 @Getter@Setter
 @Table(name = "tb_order")
-public class Order {
+public class Order implements Serializable {
+
+    private static final long serialVersionUID = 5585762371411834139L;
     @Id
     @Column(name="id", insertable = false)
     private Long id;

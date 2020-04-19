@@ -14,7 +14,11 @@
         <spring-cloud.version>Greenwich.SR2</spring-cloud.version>
         <spring-cloud-alibaba.verion>2.1.0.RELEASE</spring-cloud-alibaba.verion>
         <alibaba-spring-context-support.version>1.0.2</alibaba-spring-context-support.version>
+        <swagger.version>2.9.2</swagger.version>
+        <guava.version>28.0-jre</guava.version>
+
     </properties>
+    <!-- 开源协议与作者信息 Begin -->
     <licenses>
         <license>
             <name>Apache 2.0</name>
@@ -28,6 +32,9 @@
             <email>hanaii@126.com</email>
         </developer>
     </developers>
+    <!-- 开源协议与作者信息 End -->
+
+    <!-- 依赖管理配置 Begin -->
     <dependencyManagement>
         <dependencies>
             <!-- Spring Cloud -->
@@ -123,8 +130,30 @@
                 <artifactId>mapper-spring-boot-starter</artifactId>
                 <version>${spring-boot-mapper.version}</version>
             </dependency>
+
+            <!-- Swagger Start -->
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger2</artifactId>
+                <version>${swagger.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger-ui</artifactId>
+                <version>${swagger.version}</version>
+            </dependency>
+
+            <!-- Swagger End -->
+            <!-- 必须引入，否则报错 -->
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>${guava.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
+
+    <!-- 依赖管理配置 End -->
     <repositories>
         <repository>
             <id>alimaven</id>

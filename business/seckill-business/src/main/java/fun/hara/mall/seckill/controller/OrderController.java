@@ -7,6 +7,11 @@ import fun.hara.mall.order.domain.Order;
 import fun.hara.mall.product.api.ProductService;
 import fun.hara.mall.product.domain.Product;
 import io.seata.spring.annotation.GlobalTransactional;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
+import io.swagger.annotations.ApiModelProperty;
+import io.swagger.annotations.ApiOperation;
 import org.apache.dubbo.config.annotation.Reference;
 import org.redisson.Redisson;
 import org.redisson.api.RLock;
@@ -22,6 +27,7 @@ import java.util.concurrent.TimeUnit;
 
 @RestController
 @RequestMapping("/order")
+@Api(value = "OrderController", tags = {"订单管理接口"})
 public class OrderController {
     @Reference
     private OrderService orderService;
@@ -30,7 +36,6 @@ public class OrderController {
 
     @Resource
     private Redisson redisson;
-
     /**
      * 下单
      *
@@ -39,8 +44,15 @@ public class OrderController {
      * @return
      */
     @PostMapping("/{productId}/{count}")
+    @ApiOperation("下单")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "productId", value = "商品id", required = true, dataType = "Long"),
+            @ApiImplicitParam(name = "count", value = "下单数量", required = true, dataType = "Long")
+    })
     @GlobalTransactional(rollbackFor = Exception.class)
-    public Result<Void> order(@PathVariable("productId") Long productId, @PathVariable("count") Long count) {
+    public Result<Void> order(
+            @PathVariable("productId") Long productId,
+            @PathVariable("count") Long count) {
         // 查询对应商品库存
         RLock lock = redisson.getLock("product_stock:" + productId);
         Product product;

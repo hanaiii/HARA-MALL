@@ -13,6 +13,7 @@
     <modules>
         <module>product-provider-api</module>
         <module>order-provider-api</module>
+        <module>user-provider-api</module>
     </modules>
     <licenses>
         <license>
