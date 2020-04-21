@@ -47,4 +47,21 @@ public class ProductServiceImpl  implements ProductService {
         }
         return productDAO.selectByExample(example);
     }
+
+    @Override
+    public int reduceStock(Long productId, Long count) {
+        // 这里可以用一句sql实现，这里为了测试分布式锁，所以写成非原子操作
+        Product product = new Product();
+        product.setId(productId);
+        product = productDAO.selectByPrimaryKey(product);
+        product.setStock(product.getStock() - count);
+
+        Example example = new Example(Product.class);
+        Example.Criteria criteria = example.createCriteria();
+        criteria.andGreaterThanOrEqualTo("stock", count);
+        criteria.andEqualTo("id", productId);
+
+        return productDAO.updateByExampleSelective(product, example);
+    }
+
 }

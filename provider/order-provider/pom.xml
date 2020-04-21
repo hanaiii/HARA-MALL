@@ -31,6 +31,13 @@
             <version>${project.parent.version}</version>
         </dependency>
        <!-- Projects End -->
+        <!-- Projects Begin -->
+        <dependency>
+            <groupId>fun.hara.mall</groupId>
+            <artifactId>common-util</artifactId>
+            <version>${project.parent.version}</version>
+        </dependency>
+       <!-- Projects End -->
         <dependency>
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-seata</artifactId>

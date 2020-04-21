@@ -24,4 +24,12 @@ public interface ProductService {
      * @param keys
      */
     List<Product> selectSeckillProduct(Date startTime, Date endTime, Set<Long> excluedIds);
+
+    /**
+     * 减少指定商品库存
+     * @param productId
+     * @param count
+     * @return
+     */
+    int reduceStock(Long productId, Long count) ;
 }

@@ -3,6 +3,7 @@ package fun.hara.mall.seckill.task;
 import fun.hara.mall.common.util.DateUtil;
 import fun.hara.mall.product.api.ProductService;
 import fun.hara.mall.product.domain.Product;
+import fun.hara.mall.seckill.domain.SeckillKeys;
 import org.springframework.data.redis.core.BoundHashOperations;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -10,7 +11,6 @@ import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
 import java.util.Date;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
@@ -25,7 +25,7 @@ public class SeckillProductPushTask {
     @Resource
     private RedisTemplate<String, Long> redisTemplate;
 
-    private static final String SECKILL_PRODUCT_PREFIX = "seckill_product_";
+    //public static final String SECKILL_PRODUCT_PREFIX = "seckill_product_";
 
     @Scheduled(cron = "0/5 * * * * ?")
     public void loadSeckillProductToRedis(){
@@ -40,7 +40,8 @@ public class SeckillProductPushTask {
                     id：商品
         */
         String key = DateUtil.format(currentTimeArea[0], "HH");
-        BoundHashOperations<String, Long, Product> boundHashOps = redisTemplate.boundHashOps(SECKILL_PRODUCT_PREFIX + key);
+        BoundHashOperations<String, Long, Product> boundHashOps = redisTemplate
+                .boundHashOps(SeckillKeys.REDIS_SECKILL_PRODUCT_PREFIX + key);
         Set<Long> keys = boundHashOps.keys();
 
         // 根据时间段，查询不存在Redis中的秒杀商品

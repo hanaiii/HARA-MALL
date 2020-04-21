@@ -19,6 +19,8 @@
     <modules>
         <module>seckill-business</module>
         <module>oauth2-business</module>
+        <module>order-business</module>
+        <module>pay-business</module>
     </modules>
     <developers>
         <developer>

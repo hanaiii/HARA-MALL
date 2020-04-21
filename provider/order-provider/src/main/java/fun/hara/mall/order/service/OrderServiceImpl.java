@@ -1,6 +1,7 @@
 package fun.hara.mall.order.service;
 
 import com.alibaba.csp.sentinel.annotation.SentinelResource;
+import fun.hara.mall.common.util.IdWorker;
 import fun.hara.mall.order.api.OrderService;
 import fun.hara.mall.order.dao.OrderDAO;
 import fun.hara.mall.order.domain.Order;
@@ -25,9 +26,14 @@ public class OrderServiceImpl implements OrderService {
         orderDAO.updateByPrimaryKey(order);
     }
 
+    @Resource
+    private IdWorker idWorker;
     @Override
     @SentinelResource(value="insert", fallbackClass = OrderServiceFallback.class, fallback = "insert")
     public void insert(Order order) {
+        if(order.getId() == null){
+            order.setId(idWorker.nextId());
+        }
         orderDAO.insert(order);
     }
 }

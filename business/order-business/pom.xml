@@ -8,29 +8,12 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>seckill-business</artifactId>
-    <licenses>
-        <license>
-            <name>Apache 2.0</name>
-            <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
-        </license>
-    </licenses>
-    <developers>
-        <developer>
-            <id>hanaii</id>
-            <name>hanaii</name>
-            <email>hanaii@126.com</email>
-        </developer>
-    </developers>
+
+    <artifactId>order-business</artifactId>
     <dependencies>
-        <!-- Spring Security -->
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.cloud</groupId>-->
-<!--            <artifactId>spring-cloud-starter-oauth2</artifactId>-->
-<!--        </dependency>-->
         <dependency>
             <groupId>fun.hara.mall</groupId>
-            <artifactId>product-provider-api</artifactId>
+            <artifactId>seckill-business-feign</artifactId>
             <version>${project.parent.version}</version>
         </dependency>
         <dependency>
@@ -40,16 +23,26 @@
         </dependency>
         <dependency>
             <groupId>fun.hara.mall</groupId>
-            <artifactId>seckill-business-feign</artifactId>
+            <artifactId>product-provider-api</artifactId>
             <version>${project.parent.version}</version>
         </dependency>
-        <!-- Projects End -->
+        <!-- RocketMQ start -->
+        <dependency>
+            <groupId>org.apache.rocketmq</groupId>
+            <artifactId>rocketmq-spring-boot-starter</artifactId>
+        </dependency>
+        <!-- RocketMQ end -->
+        <!-- redis start -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
+        <!-- redis end -->
         <dependency>
             <groupId>org.redisson</groupId>
             <artifactId>redisson</artifactId>
             <version>3.12.3</version>
         </dependency>
-
 
         <!-- DataSource Begin -->
         <dependency>
@@ -76,29 +69,12 @@
             <artifactId>mapper-spring-boot-starter</artifactId>
         </dependency>
         <!-- DataSource End -->
-        <!-- Projects End -->
         <dependency>
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-seata</artifactId>
         </dependency>
-
-        <!-- redis start -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-redis</artifactId>
-        </dependency>
-        <!-- redis end -->
-
-        <dependency>
-            <groupId>fun.hara.mall</groupId>
-            <artifactId>common-util</artifactId>
-            <version>${project.parent.version}</version>
-        </dependency>
-        <!-- RocketMQ start -->
-        <dependency>
-            <groupId>org.apache.rocketmq</groupId>
-            <artifactId>rocketmq-spring-boot-starter</artifactId>
-        </dependency>
-        <!-- RocketMQ end -->
     </dependencies>
+
+
+
 </project>

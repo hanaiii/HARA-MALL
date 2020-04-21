@@ -22,4 +22,11 @@
             <email>hanaii@126.com</email>
         </developer>
     </developers>
+    <dependencies>
+        <dependency>
+            <groupId>fun.hara.mall</groupId>
+            <artifactId>seckill-business-feign</artifactId>
+            <version>${project.parent.version}</version>
+        </dependency>
+    </dependencies>
 </project>
