@@ -32,4 +32,11 @@ public interface ProductService {
      * @return
      */
     int reduceStock(Long productId, Long count) ;
+
+    /**
+     * 增加指定商品库存
+     * @param productId
+     * @param count
+     */
+    void addStock(Long productId, Long count);
 }

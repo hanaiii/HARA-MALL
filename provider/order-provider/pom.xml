@@ -29,6 +29,12 @@
             <groupId>fun.hara.mall</groupId>
             <artifactId>order-provider-api</artifactId>
             <version>${project.parent.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-web</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
        <!-- Projects End -->
         <!-- Projects Begin -->

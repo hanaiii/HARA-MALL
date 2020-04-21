@@ -64,4 +64,9 @@ public class ProductServiceImpl  implements ProductService {
         return productDAO.updateByExampleSelective(product, example);
     }
 
+    @Override
+    public void addStock(Long productId, Long count) {
+        reduceStock(productId, -count);
+    }
+
 }

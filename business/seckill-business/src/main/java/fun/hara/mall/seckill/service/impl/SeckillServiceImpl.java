@@ -1,5 +1,6 @@
 package fun.hara.mall.seckill.service.impl;
 
+import com.alibaba.fastjson.JSON;
 import fun.hara.mall.common.dto.Result;
 import fun.hara.mall.common.dto.StatusCode;
 import fun.hara.mall.common.util.DateUtil;
@@ -8,7 +9,12 @@ import fun.hara.mall.order.domain.Order;
 import fun.hara.mall.order.domain.factory.SeckillOrderFactory;
 import fun.hara.mall.seckill.domain.SeckillKeys;
 import fun.hara.mall.seckill.domain.SeckillOrderInfoMessage;
+import fun.hara.mall.seckill.domain.SeckillProductForUserMessage;
 import fun.hara.mall.seckill.service.SeckillService;
+import org.apache.rocketmq.client.exception.MQBrokerException;
+import org.apache.rocketmq.client.exception.MQClientException;
+import org.apache.rocketmq.common.message.Message;
+import org.apache.rocketmq.remoting.exception.RemotingException;
 import org.apache.rocketmq.spring.core.RocketMQTemplate;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
@@ -49,7 +55,18 @@ public class SeckillServiceImpl implements SeckillService {
         // 将数据发送给 MQ
         SeckillOrderInfoMessage orderInfo = new SeckillOrderInfoMessage(idWorker.nextId(), productId, userId, key, new Date());
         rocketMQTemplate.syncSend(SeckillKeys.MQ_TOPIC, orderInfo);
-
+        // 发送延时消息给MQ，30秒没付款则还原库存，设置秒杀订单失败
+        Message msg = new Message();
+        SeckillProductForUserMessage seckillProductForUserMessage = new SeckillProductForUserMessage(productId, userId);
+        byte[] bytes = JSON.toJSONString(seckillProductForUserMessage).getBytes();
+        msg.setBody(bytes);
+        msg.setDelayTimeLevel(2);
+        msg.setTopic(SeckillKeys.MQ_DELAY_TOPIC);
+        try {
+            rocketMQTemplate.getProducer().send(msg);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         // 向Redis 插入排队中的订单信息
         Order order = SeckillOrderFactory.getQueuingSeckillOrder(orderInfo);
         redisTemplate.opsForHash().put(SeckillKeys.REDIS_SECKILL_ORDER_KEY+productId, userId, order);

@@ -26,14 +26,9 @@ public class OrderServiceImpl implements OrderService {
         orderDAO.updateByPrimaryKey(order);
     }
 
-    @Resource
-    private IdWorker idWorker;
     @Override
     @SentinelResource(value="insert", fallbackClass = OrderServiceFallback.class, fallback = "insert")
     public void insert(Order order) {
-        if(order.getId() == null){
-            order.setId(idWorker.nextId());
-        }
         orderDAO.insert(order);
     }
 }

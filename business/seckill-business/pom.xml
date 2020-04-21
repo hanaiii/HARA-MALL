@@ -38,6 +38,7 @@
             <artifactId>order-provider-api</artifactId>
             <version>${project.parent.version}</version>
         </dependency>
+
         <dependency>
             <groupId>fun.hara.mall</groupId>
             <artifactId>seckill-business-feign</artifactId>
@@ -49,7 +50,6 @@
             <artifactId>redisson</artifactId>
             <version>3.12.3</version>
         </dependency>
-
 
         <!-- DataSource Begin -->
         <dependency>

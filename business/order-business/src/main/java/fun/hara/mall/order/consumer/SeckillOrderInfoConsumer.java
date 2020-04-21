@@ -109,6 +109,8 @@ public class SeckillOrderInfoConsumer implements RocketMQListener<SeckillOrderIn
         redisTemplate.opsForHash().delete(SeckillKeys.REDIS_USER_IN_QUEUE_COUNT_KEY, userId);
         // 可以定时刷入，这里每次刷入保证强一致性
         insertOrderToDB(order);
+        // 放入简易的待支付订单信息
+        redisTemplate.opsForHash().put(SeckillKeys.REDIS_SECKILL_SIMPLE_ORDER_PRODUCT, order.getId(), productId);
     }
 
     /**
@@ -120,7 +122,7 @@ public class SeckillOrderInfoConsumer implements RocketMQListener<SeckillOrderIn
         // 库存-1
         int row = productService.reduceStock(order.getProductId(),1L);
         if(row == 0){
-            log.error("商品id：{1}，库存更新失败", order.getProductId());
+            log.error("商品id：{}，库存更新失败", order.getProductId());
             throw new RuntimeException("库存更新失败");
         }
         // 生成订单对象
