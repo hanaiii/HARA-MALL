@@ -3,7 +3,7 @@
 - dependencies：全局依赖管理
 - common
 
-  - common-dto
+  - common-entity
 - provider：基于dubbo，作为生产者
 
   - product-provider-service

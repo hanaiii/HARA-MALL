@@ -104,7 +104,7 @@
         <!-- Projects Begin -->
         <dependency>
             <groupId>fun.hara.mall</groupId>
-            <artifactId>common-dto</artifactId>
+            <artifactId>common-entity</artifactId>
             <version>${project.parent.version}</version>
         </dependency>
 

@@ -16,6 +16,7 @@
         <alibaba-spring-context-support.version>1.0.2</alibaba-spring-context-support.version>
         <swagger.version>2.9.2</swagger.version>
         <guava.version>28.0-jre</guava.version>
+        <redisson.version>3.12.3</redisson.version>
 
     </properties>
     <!-- 开源协议与作者信息 Begin -->
@@ -149,6 +150,12 @@
                 <groupId>com.google.guava</groupId>
                 <artifactId>guava</artifactId>
                 <version>${guava.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.redisson</groupId>
+                <artifactId>redisson</artifactId>
+                <version>${redisson.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

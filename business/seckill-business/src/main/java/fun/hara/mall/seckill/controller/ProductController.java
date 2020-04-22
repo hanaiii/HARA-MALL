@@ -20,22 +20,20 @@ import java.util.List;
 @RestController
 @RequestMapping("/product")
 public class ProductController {
-    @Reference
-    private ProductService productService;
-
-    @GetMapping
-    @ApiOperation("查询所有商品")
-    public Result<List<Product>> selectAll(){
-        List<Product> products = productService.selectAll();
-        return new Result<>(true, StatusCode.OK,"查询成功", products);
-    }
-
-    @PutMapping("/{id}")
-    @ApiOperation("更新商品信息")
-    public Result<Void> update(@RequestBody Product product, @PathVariable("id") Long id){
-        productService.update(product, id);
-        return new Result<>(true, StatusCode.OK,"修改成功");
-    }
-
-
+//    @Reference
+//    private ProductService productService;
+//
+//    @GetMapping
+//    @ApiOperation("查询所有商品")
+//    public Result<List<Product>> selectAll(){
+//        List<Product> products = productService.selectAll();
+//        return new Result<>(true, StatusCode.OK,"查询成功", products);
+//    }
+//
+//    @PutMapping("/{id}")
+//    @ApiOperation("更新商品信息")
+//    public Result<Void> update(@RequestBody Product product, @PathVariable("id") Long id){
+//        productService.update(product, id);
+//        return new Result<>(true, StatusCode.OK,"修改成功");
+//    }
 }

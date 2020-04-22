@@ -17,7 +17,7 @@
         </license>
     </licenses>
     <modules>
-        <module>common-dto</module>
+        <module>common-entity</module>
         <module>common-util</module>
     </modules>
     <developers>

@@ -37,7 +37,7 @@ spring:
       connection-test-query: SELECT 1
 dubbo:
   scan:
-    base-packages: fun.hara.mall.seckill.controller
+    base-packages: fun.hara.mall.seckill.service
   protocol:
     name: dubbo
     port: -1
@@ -67,3 +67,7 @@ rocketmq:
   producer:
     group: seckill-producer
     sendMessageTimeout: 300000
+seckill:
+  # 每个时间段的大小，必须能被24整除。
+  # 如设置为6，则表示有4个时间段：[0,6），[6,12)，[12,18)，[18,24)
+  time-gap: 6
