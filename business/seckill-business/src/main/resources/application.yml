@@ -45,15 +45,15 @@ dubbo:
   registry:
     address: nacos://ubuntu.fun
     port: 8848
-#security:
-#  oauth2:
-#    client:
-#      client-id: client
-#      client-secret: secret
-#      access-token-uri: http://localhost:9000/oauth/token
-#      user-authorization-uri: http://localhost:9000/oauth/authorize
-#    resource:
-#      token-info-uri: http://localhost:9000/oauth/check_token
+security:
+  oauth2:
+    client:
+      client-id: client
+      client-secret: secret
+      access-token-uri: http://localhost:9000/oauth/token
+      user-authorization-uri: http://localhost:9000/oauth/authorize
+    resource:
+      token-info-uri: http://localhost:9000/oauth/check_token
 server:
   # ${random.int[9000,9999]} 随机端口
   port: 9002
@@ -70,4 +70,4 @@ rocketmq:
 seckill:
   # 每个时间段的大小，必须能被24整除。
   # 如设置为6，则表示有4个时间段：[0,6），[6,12)，[12,18)，[18,24)
-  time-gap: 6
+  time-gap: "6"

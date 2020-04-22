@@ -23,12 +23,6 @@
         </developer>
     </developers>
     <dependencies>
-        <!-- Spring Security -->
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.cloud</groupId>-->
-<!--            <artifactId>spring-cloud-starter-oauth2</artifactId>-->
-<!--        </dependency>-->
-
 
         <!-- ==================== Project Start ==================== -->
         <!-- Common Start -->
@@ -55,7 +49,6 @@
             <version>${project.parent.version}</version>
         </dependency>
         <!-- Dubbo Consumer End-->
-
         <!-- Feign Start -->
         <dependency>
             <groupId>fun.hara.mall</groupId>

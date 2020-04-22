@@ -72,11 +72,6 @@ public class SeckillOrderInfoConsumer implements RocketMQListener<SeckillOrderIn
     }
 
 
-    private void transferSeckillOrderToDB(Long productId) {
-        BoundHashOperations<String, Object, Object> ops = redisTemplate.boundHashOps(SeckillKeys.REDIS_SECKILL_ORDER_KEY + productId);
-
-    }
-
     /**
      * 将Redis中相关的秒杀数据更新到下单失败状态
      * @param orderInfo

@@ -28,7 +28,7 @@ public class SeckillProductPushTask {
      *   每个时间段的大小，必须能被24整除。
      *   如设置为6，则表示有4个时间段：[0,6），[6,12)，[12,18)，[18,24)
      */
-    @Value("seckill.time-gap")
+    @Value("${seckill.time-gap}")
     private Integer timeGap;
 
 
@@ -44,7 +44,6 @@ public class SeckillProductPushTask {
         Date[] currentTimeArea = DateUtil.getCurrentTimeArea(timeGap);
 
         seckillRedisService.saveTimeAreaNewSeckillProduct(currentTimeArea[0], currentTimeArea[1]);
-
 
     }
 }

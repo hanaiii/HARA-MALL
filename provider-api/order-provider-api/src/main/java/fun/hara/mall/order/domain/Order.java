@@ -1,5 +1,7 @@
 package fun.hara.mall.order.domain;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -14,6 +16,7 @@ import java.util.Date;
 
 @Getter@Setter
 @Table(name = "tb_seckill_order")
+@ApiModel(value = "Order", description = "订单实体对象")
 public class Order implements Serializable {
 
     private static final long serialVersionUID = 5585762371411834139L;
@@ -30,6 +33,7 @@ public class Order implements Serializable {
     /**
      * 订单状态（0：排队中，1：待支付，2：支付成功，3：下单失败）
      */
+    @ApiModelProperty(value = "state", name = "订单状态（0：排队中，1：待支付，2：支付成功，3：下单失败）")
     @Column(name="state")
     private Integer state;
 

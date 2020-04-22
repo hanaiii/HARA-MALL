@@ -9,7 +9,7 @@ import fun.hara.mall.order.domain.Order;
 import fun.hara.mall.order.domain.factory.SeckillOrderFactory;
 import fun.hara.mall.seckill.domain.SeckillKeys;
 import fun.hara.mall.seckill.domain.SeckillOrderInfoMessage;
-import fun.hara.mall.seckill.domain.SeckillProductForUserMessage;
+import fun.hara.mall.seckill.domain.SeckillRollbackCheckMessage;
 import fun.hara.mall.seckill.service.SeckillService;
 import org.apache.rocketmq.common.message.Message;
 import org.apache.rocketmq.spring.core.RocketMQTemplate;
@@ -52,10 +52,10 @@ public class SeckillServiceImpl implements SeckillService {
         // 将数据发送给 MQ
         SeckillOrderInfoMessage orderInfo = new SeckillOrderInfoMessage(idWorker.nextId(), productId, userId, key, new Date());
         rocketMQTemplate.syncSend(SeckillKeys.MQ_TOPIC, orderInfo);
-        // 发送延时消息给MQ，30秒没付款则还原库存，设置秒杀订单失败
+        // 发送延时消息给MQ，5秒没付款则还原库存，设置秒杀订单失败
         Message msg = new Message();
-        SeckillProductForUserMessage seckillProductForUserMessage = new SeckillProductForUserMessage(productId, userId);
-        byte[] bytes = JSON.toJSONString(seckillProductForUserMessage).getBytes();
+        SeckillRollbackCheckMessage seckillRollbackCheckMessage = new SeckillRollbackCheckMessage(productId, userId);
+        byte[] bytes = JSON.toJSONString(seckillRollbackCheckMessage).getBytes();
         msg.setBody(bytes);
         msg.setDelayTimeLevel(2);
         msg.setTopic(SeckillKeys.MQ_DELAY_TOPIC);

@@ -14,7 +14,10 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.util.List;
-
+/**   
+ * UserDetailsService 实现
+ * @Author: hanaii 
+ */
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
     @Reference
@@ -26,6 +29,10 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         String encode = new BCryptPasswordEncoder().encode("123456");
         System.out.println(encode);
     }
+    /**   
+     * 根据用户名加载用户信息
+     * @Author: hanaii 
+     */
     @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
         fun.hara.mall.user.domain.User user = userService.getByUsername(s);
@@ -39,6 +46,6 @@ public class UserDetailsServiceImpl implements UserDetailsService {
             grantedAuthorities.add(grantedAuthority);
         });
         // 由框架完成认证工作
-        return new User(user.getUsername(), user.getPassword(), grantedAuthorities);
+        return new User(user.getId().toString(), user.getPassword(), grantedAuthorities);
     }
 }

@@ -3,6 +3,7 @@ package fun.hara.mall.pay.service.impl;
 import com.alibaba.fastjson.JSON;
 import fun.hara.mall.common.dto.Result;
 import fun.hara.mall.common.dto.StatusCode;
+import fun.hara.mall.common.util.Oauth2Util;
 import fun.hara.mall.order.api.OrderService;
 import fun.hara.mall.order.domain.Order;
 import fun.hara.mall.pay.service.PayService;
@@ -16,7 +17,6 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.sql.Time;
 import java.util.concurrent.TimeUnit;
 
 @Service
@@ -32,7 +32,7 @@ public class PayServiceImpl implements PayService {
     @Override
     public Result<Void> pay(Long orderId) {
         // 获取用户id
-        Long userId = 1L;
+        Long userId = Oauth2Util.getUserId();
         // 查询对应的订单，判断是否处于待支付状态
         HashOperations opsForHash = redisTemplate.opsForHash();
         Long productId = Long.valueOf(opsForHash.get(SeckillKeys.REDIS_SECKILL_SIMPLE_ORDER_PRODUCT, orderId).toString());
@@ -62,7 +62,6 @@ public class PayServiceImpl implements PayService {
                 lock.unlock();
             }
         }
-
         return new Result<>(true, StatusCode.OK, "支付失败！");
 
     }

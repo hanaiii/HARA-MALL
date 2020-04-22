@@ -10,7 +10,10 @@ import org.springframework.context.annotation.Configuration;
 
 import javax.sql.DataSource;
 
-
+/**   
+ * Seata数据源代理配置
+ * @Author: hanaii 
+ */
 @Configuration
 public class DataSourceProxyConfig {
 

@@ -23,15 +23,15 @@ dubbo:
   registry:
     address: nacos://ubuntu.fun
     port: 8848
-#security:
-#  oauth2:
-#    client:
-#      client-id: client
-#      client-secret: secret
-#      access-token-uri: http://localhost:9000/oauth/token
-#      user-authorization-uri: http://localhost:9000/oauth/authorize
-#    resource:
-#      token-info-uri: http://localhost:9000/oauth/check_token
+security:
+  oauth2:
+    client:
+      client-id: client
+      client-secret: secret
+      access-token-uri: http://localhost:9000/oauth/token
+      user-authorization-uri: http://localhost:9000/oauth/authorize
+    resource:
+      token-info-uri: http://localhost:9000/oauth/check_token
 server:
   # ${random.int[9000,9999]} 随机端口
   port: 9004

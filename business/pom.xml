@@ -108,6 +108,20 @@
             <version>${project.parent.version}</version>
         </dependency>
 
-
+        <!-- Projects End -->
+        <!-- Swagger Start -->
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+        </dependency>
+        <!-- Swagger End -->
     </dependencies>
 </project>

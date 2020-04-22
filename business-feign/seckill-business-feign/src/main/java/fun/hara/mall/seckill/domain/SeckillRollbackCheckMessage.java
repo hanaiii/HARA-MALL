@@ -12,7 +12,7 @@ import lombok.Setter;
 @Getter@Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class SeckillProductForUserMessage {
+public class SeckillRollbackCheckMessage {
     private Long userId;
     private Long productId;
 }

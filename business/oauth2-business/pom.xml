@@ -11,11 +11,12 @@
 
     <artifactId>oauth2-business</artifactId>
     <dependencies>
-        <!-- Spring Security -->
+        <!-- Spring Security End-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-oauth2</artifactId>
         </dependency>
+        <!-- Spring Security End-->
 
         <!-- DataSource Begin -->
         <dependency>
@@ -41,11 +42,16 @@
             <groupId>tk.mybatis</groupId>
             <artifactId>mapper-spring-boot-starter</artifactId>
         </dependency>
+        <!-- DataSource End -->
+
+        <!-- Project Start -->
         <dependency>
             <groupId>fun.hara.mall</groupId>
             <artifactId>user-provider-api</artifactId>
             <version>${project.parent.version}</version>
         </dependency>
+        <!-- Project End -->
+
     </dependencies>
 
 </project>

@@ -14,7 +14,10 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.annotation.Resource;
-
+/**   
+ * Spring Security配置
+ * @Author: hanaii 
+ */
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true, jsr250Enabled = true)
@@ -24,12 +27,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
         // 配置默认的加密方式
         return new BCryptPasswordEncoder();
     }
-//    @Bean
-//    @Override
-//    protected UserDetailsService userDetailsService() {
-//        // 自己实现
-//        return userDetailsService;
-//    }
+
     @Resource(type = UserDetailsServiceImpl.class)
     private UserDetailsService userDetailsService;
 
